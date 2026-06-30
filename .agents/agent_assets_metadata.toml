@@ -60,3 +60,9 @@ id = "NB0EARXwlcWyWGSF3xyfa"
 uri = "file://artifacts/booking-site/src/assets/feature-expert.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "WJ5gGivCpdF7kzNHycgkL"
+uri = "file://artifacts/booking-site/src/assets/hero-banner.png"
+type = "image"
+title = "generated_image"

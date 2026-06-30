@@ -1,9 +1,9 @@
 export const CONTENT = {
   business: {
-    name: "AS Glam Studio",
+    name: "A&S Signature Salon",
     tagline: "Where Beauty Meets Expertise",
     phone: "+91 9540555093",
-    email: "hello@asglamstudio.com",
+    email: "hello@assignaturesalon.com",
     address: "248 Rosewood Avenue, Suite 12, San Francisco, CA 94110",
     mapEmbedUrl: "https://maps.google.com/maps?q=San+Francisco,CA&output=embed",
     social: { instagram: "#", facebook: "#", whatsapp: "#", google: "#" },
@@ -33,7 +33,7 @@ export const CONTENT = {
   },
   closingCta: {
     headline: "Ready to Feel Amazing?",
-    subtext: "Join thousands of clients who trust AS Glam Studio for their beauty needs.",
+    subtext: "Join thousands of clients who trust A&S Signature Salon for their beauty needs.",
   },
   services: {
     hair: [
