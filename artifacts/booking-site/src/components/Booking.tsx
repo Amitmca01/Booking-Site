@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { CalendarIcon, CheckCircle2 } from "lucide-react";
+import { CalendarIcon, CheckCircle2, Loader2 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
@@ -39,9 +39,7 @@ const formSchema = z.object({
   email: z.string().email("Valid email is required"),
   serviceId: z.string().min(1, "Please select a service"),
   practitioner: z.string().optional(),
-  date: z.date({
-    required_error: "Please select a date",
-  }),
+  date: z.date({ required_error: "Please select a date" }),
   timeSlot: z.string().min(1, "Please select a time"),
   notes: z.string().optional(),
 });
@@ -50,11 +48,13 @@ type FormValues = z.infer<typeof formSchema>;
 
 const TIME_SLOTS = [
   "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
-  "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"
+  "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM",
 ];
 
 export function Booking() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submittedData, setSubmittedData] = useState<FormValues | null>(null);
 
   const form = useForm<FormValues>({
@@ -70,25 +70,57 @@ export function Booking() {
     },
   });
 
-  // Flatten all services for the dropdown
   const allServices = [
     ...CONTENT.services.hair,
     ...CONTENT.services.skin,
     ...CONTENT.services.wellness,
   ];
 
-  const onSubmit = (data: FormValues) => {
-    setSubmittedData(data);
-    setIsSubmitted(true);
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const selectedService = allServices.find((s) => s.id === data.serviceId);
+
+    const payload = {
+      fullName: data.fullName,
+      phone: data.phone,
+      email: data.email,
+      serviceId: data.serviceId,
+      serviceName: selectedService?.name ?? data.serviceId,
+      practitioner: data.practitioner || null,
+      appointmentDate: format(data.date, "yyyy-MM-dd"),
+      timeSlot: data.timeSlot,
+      notes: data.notes || null,
+    };
+
+    try {
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit booking. Please try again.");
+      }
+
+      setSubmittedData(data);
+      setIsSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const selectedService = allServices.find(s => s.id === submittedData?.serviceId);
+  const selectedService = allServices.find((s) => s.id === submittedData?.serviceId);
 
   return (
     <section id="booking" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
-          
+
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -99,9 +131,9 @@ export function Booking() {
               Book Your Appointment
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Ready to feel amazing? Secure your spot with one of our expert practitioners. We'll send a confirmation email instantly.
+              Ready to feel amazing? Secure your spot with one of our expert practitioners. We'll send a confirmation instantly.
             </p>
-            
+
             <div className="bg-muted p-6 rounded-2xl border border-border">
               <h3 className="font-serif font-bold text-xl mb-4 text-foreground">What to expect</h3>
               <ul className="space-y-3">
@@ -135,17 +167,19 @@ export function Booking() {
                 </div>
                 <h3 className="text-3xl font-serif font-bold text-foreground mb-3">Booking Confirmed!</h3>
                 <p className="text-muted-foreground mb-8 max-w-sm">
-                  Thank you, {submittedData?.fullName.split(' ')[0]}. Your appointment is all set. We've sent the details to {submittedData?.email}.
+                  Thank you, {submittedData?.fullName.split(" ")[0]}. Your appointment has been saved. We'll be in touch shortly.
                 </p>
-                
+
                 <div className="bg-muted/50 w-full p-4 rounded-xl text-left border border-border mb-8">
                   <p className="text-sm text-muted-foreground mb-1">Service</p>
                   <p className="font-medium text-foreground mb-3">{selectedService?.name}</p>
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Date</p>
-                      <p className="font-medium text-foreground">{submittedData?.date && format(submittedData.date, "MMMM d, yyyy")}</p>
+                      <p className="font-medium text-foreground">
+                        {submittedData?.date && format(submittedData.date, "MMMM d, yyyy")}
+                      </p>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Time</p>
@@ -153,11 +187,12 @@ export function Booking() {
                     </div>
                   </div>
                 </div>
-                
-                <Button 
-                  onClick={() => setIsSubmitted(false)} 
+
+                <Button
+                  onClick={() => { setIsSubmitted(false); form.reset(); }}
                   variant="outline"
                   className="w-full"
+                  data-testid="button-book-another"
                 >
                   Book Another Appointment
                 </Button>
@@ -186,7 +221,7 @@ export function Booking() {
                         <FormItem>
                           <FormLabel>Phone Number *</FormLabel>
                           <FormControl>
-                            <Input placeholder="(555) 000-0000" type="tel" {...field} data-testid="input-phone" />
+                            <Input placeholder="+91 98765 43210" type="tel" {...field} data-testid="input-phone" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -338,7 +373,7 @@ export function Booking() {
                       <FormItem>
                         <FormLabel>Any special requests or notes? (Optional)</FormLabel>
                         <FormControl>
-                          <Textarea 
+                          <Textarea
                             placeholder="Tell us about your hair/skin type or any concerns..."
                             className="resize-none min-h-[100px]"
                             {...field}
@@ -350,8 +385,27 @@ export function Booking() {
                     )}
                   />
 
-                  <Button type="submit" className="w-full text-base py-6" size="lg" data-testid="button-submit-booking">
-                    Confirm My Appointment
+                  {submitError && (
+                    <div className="text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-lg p-3" data-testid="submit-error">
+                      {submitError}
+                    </div>
+                  )}
+
+                  <Button
+                    type="submit"
+                    className="w-full text-base py-6"
+                    size="lg"
+                    disabled={isSubmitting}
+                    data-testid="button-submit-booking"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Confirming…
+                      </>
+                    ) : (
+                      "Confirm My Appointment"
+                    )}
                   </Button>
                 </form>
               </Form>

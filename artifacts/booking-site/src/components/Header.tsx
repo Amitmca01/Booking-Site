@@ -35,7 +35,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center gap-2" data-testid="link-home">
             <span className="font-serif text-2xl font-bold text-primary tracking-tight">
-              Lumière
+              {CONTENT.business.name}
             </span>
           </a>
 

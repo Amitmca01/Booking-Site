@@ -1,9 +1,9 @@
 export const CONTENT = {
   business: {
-    name: "Lumière Beauty Studio",
+    name: "AS Glam Studio",
     tagline: "Where Beauty Meets Expertise",
-    phone: "(555) 820-4100",
-    email: "hello@lumierebeauty.com",
+    phone: "+91 9540555093",
+    email: "hello@asglamstudio.com",
     address: "248 Rosewood Avenue, Suite 12, San Francisco, CA 94110",
     mapEmbedUrl: "https://maps.google.com/maps?q=San+Francisco,CA&output=embed",
     social: { instagram: "#", facebook: "#", whatsapp: "#", google: "#" },
@@ -33,7 +33,7 @@ export const CONTENT = {
   },
   closingCta: {
     headline: "Ready to Feel Amazing?",
-    subtext: "Join thousands of clients who trust Lumière for their beauty needs.",
+    subtext: "Join thousands of clients who trust AS Glam Studio for their beauty needs.",
   },
   services: {
     hair: [
