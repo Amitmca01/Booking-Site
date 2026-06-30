@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import testimonial1 from "../assets/testimonial-1.png";
+import testimonial1 from "@assets/img_(5)_1782839522175.jpeg";
 import testimonial2 from "../assets/testimonial-2.png";
 import testimonial3 from "../assets/testimonial-3.png";
 
