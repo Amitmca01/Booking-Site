@@ -1,0 +1,58 @@
+# Replit Build Brief — Single-Page Booking Website
+
+Paste everything below into Replit's AI (Agent/Assistant) as one prompt. Replace the [PLACEHOLDERS] with real client info before pasting, or leave them in and ask Replit to use placeholder content for now.
+
+---
+
+Build a single-page, mobile-responsive booking website for an appointment-based business (salon/barber/spa/clinic) using React + Tailwind CSS. Output a clean, modern, production-ready single page with smooth scroll navigation between sections. Use a cohesive color palette (primary brand color + neutral background + accent for CTAs). Use a real icon library (lucide-react). No placeholder lorem ipsum — use the content below exactly.
+
+Business: [BUSINESS NAME] — [SHORT TAGLINE]
+
+Build the page in this exact section order:
+
+1. Header / Navigation
+Sticky header with [BUSINESS LOGO/NAME] on the left, nav links (Home, Services, About, Gallery, Contact) on the right, a prominent "Book Now" button, and a click-to-call phone number [PHONE NUMBER]. Collapse into a hamburger menu on mobile.
+
+2. Hero Section
+Full-width hero with background image placeholder, headline "[HEADLINE]", subheadline "[SUBHEADLINE]", a primary CTA button "[PRIMARY CTA]" that scrolls to the booking section, and a secondary "Call Us Now" button. Below the CTA, show a row of 3 trust badges: [BADGE 1], [BADGE 2], [BADGE 3].
+
+3. Trust Bar
+Thin strip directly under the hero with 3-4 stats: [YEARS IN BUSINESS], [CLIENTS SERVED], [CERTIFICATION/AWARD].
+
+4. About / Why Choose Us
+Section titled "Why Clients Choose [BUSINESS NAME]" with a short about paragraph, plus a 4-item feature grid (icon + title + one-line description) for: [FEATURE 1], [FEATURE 2], [FEATURE 3], [FEATURE 4].
+
+5. Services & Pricing
+Section titled "Our Services" with 2-3 category tabs or grouped cards: [CATEGORY 1], [CATEGORY 2], [CATEGORY 3]. Each category lists 3-6 services as cards or table rows showing service name, duration, and price. Include a "Download Full Price List" link if applicable.
+
+6. Booking Section
+Section titled "Book Your Appointment" with a form containing: Full Name, Phone Number, Email, Service dropdown (populated from Section 5 services), Preferred Stylist/Practitioner dropdown (optional), Date picker, Time slot picker, and a Notes textarea. Submit button text: "[BOOKING SUBMIT BUTTON]". Build the form UI fully functional with React state and basic validation (required fields, valid email/phone). On submit, show a success confirmation message (no backend needed yet — log the booking object to console and store it in local component state as a placeholder for a future booking API/Calendly/Fresha integration).
+
+7. Testimonials
+Section titled "What Our Clients Say" with a 3-card carousel or grid showing client photo/initials, name, star rating, and a 1-2 sentence quote. Include 3 sample testimonials using placeholder names.
+
+8. Gallery (optional)
+Responsive image grid, 6 placeholder images, lightbox on click if time allows.
+
+9. FAQ
+Section titled "Frequently Asked Questions" with an accordion of 5 expandable Q&A items (use placeholder questions about payment, cancellation policy, walk-ins, parking, hygiene).
+
+10. Location & Hours
+Two-column layout: embedded Google Map (use an iframe placeholder) on one side, address [FULL ADDRESS] and business hours table on the other. Include a "Get Directions" button linking to Google Maps.
+
+11. Final CTA
+Full-width banner with headline "[CLOSING HEADLINE]", subtext "[CLOSING SUBTEXT]", and a large "Book Now" button.
+
+12. Footer
+Dark footer with business name/logo, tagline, three columns (Quick Links, Contact Info, Business Hours), social media icons (Instagram, Facebook, WhatsApp, Google Business — link placeholders), and copyright line "© 2026 [BUSINESS NAME]. All rights reserved."
+
+Technical requirements:
+- React functional components with hooks, organized as separate component files per section (Header.jsx, Hero.jsx, Services.jsx, Booking.jsx, Testimonials.jsx, FAQ.jsx, Footer.jsx, etc.)
+- Tailwind CSS for all styling, fully responsive (mobile, tablet, desktop)
+- Smooth scroll navigation from header links to each section
+- Booking form must be functional client-side (state + validation) even without a real backend
+- Accordion for FAQ must be functional (expand/collapse)
+- Clean, accessible markup (proper headings, alt text, labels on form fields)
+- No unused dependencies, no lorem ipsum, no broken links
+
+Deliverable: a fully working, visually polished single-page site I can preview immediately in Replit, ready to swap placeholder content for any new client by editing one config/content file.
