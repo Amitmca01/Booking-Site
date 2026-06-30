@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "91Us394rvq2ZQQf4GAKcx"
+uri = "file://artifacts/booking-site/src/assets/gallery-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "haP-OPwnzHxyWB2Wbaxfp"
+uri = "file://artifacts/booking-site/src/assets/gallery-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "doJxgu9Ag5OkKjKnusKD2"
+uri = "file://artifacts/booking-site/src/assets/gallery-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "zhuXq49GdguHLsot-OZGp"
+uri = "file://artifacts/booking-site/src/assets/gallery-4.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "xhHFJCSL0n-lsblykwO09"
+uri = "file://artifacts/booking-site/src/assets/gallery-5.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "ESnhpPKqZhX_nVL0yDigT"
+uri = "file://artifacts/booking-site/src/assets/gallery-6.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "jlgFjD4YCaPXjif04tcw5"
+uri = "file://artifacts/booking-site/src/assets/testimonial-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "JW60lOmz22UNLqLtUbF2v"
+uri = "file://artifacts/booking-site/src/assets/testimonial-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "jFLO3ou9i1rcPL1SYPGQP"
+uri = "file://artifacts/booking-site/src/assets/testimonial-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "NB0EARXwlcWyWGSF3xyfa"
+uri = "file://artifacts/booking-site/src/assets/feature-expert.png"
+type = "image"
+title = "generated_image"
