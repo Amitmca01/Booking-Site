@@ -66,3 +66,9 @@ id = "WJ5gGivCpdF7kzNHycgkL"
 uri = "file://artifacts/booking-site/src/assets/hero-banner.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "oxTxo0enhkh8KQ8x-NJ4m"
+uri = "file://artifacts/booking-site/src/assets/hero-bg.png"
+type = "image"
+title = "generated_image"
