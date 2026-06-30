@@ -60,10 +60,10 @@ export const CONTENT = {
   testimonials: [
     {
       id: 1,
-      name: "Sarah M.",
+      name: "Amit Kumar",
       rating: 5,
       text: "Absolute perfection every single time. Maria transformed my hair and I couldn't be happier with the results.",
-      initials: "SM"
+      initials: "AK"
     },
     {
       id: 2,
